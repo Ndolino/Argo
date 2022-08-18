@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} 
+
+{% block content %} 
+<div>
+ {% for datas in data %}
+
+    <span>{{ datas['miner_state'] }}</span>
+    <p>{{ datas['miner_ip'] }}</p>
+    <p>{{ datas['miner_state_time'] }}</p>
+    <p>{{ datas['find_miner'] }}</p>
+    <p>{{ datas['restart_required'] }}</p>
+    <p>{{ datas['reboot_required'] }}</p>
+    <p>{{ datas['unlocked'] }}</p>
+
+    {% endfor %}
+</div>
+{% endblock content %}
