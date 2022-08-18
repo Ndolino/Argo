@@ -1,0 +1,51 @@
+
+
+
+Steps to  Monitor the Server running in the cloud including the Database and to monitor data from  Postgres Exporter Service Database.
+WE can also use excel to create a pivot table for statust of mining from the Database.
+
+A prometheus 
+1. Installation of Prometheus
+
+2 How  create and Install Setup the Postgres Exporter Service
+ is responsible for fetching the statistics from various hardware and virtual resources in the format which Prometheus can understand and with the help of the prometheus server those statistics can be exposed on port 9100.
+
+Primarily we look for the following metrics -
+
+* CPU usage
+* Memory usage
+* Disk usage
+* Network usage
+
+3  Adding node exporter scrap_configs to prometheus as a YAML Configuration
+4 You describe the alerts in alert.rules file (usually in /etc/prometheus) (disk usage, cmemory network)
+
+B Graffanna
+1. Install  Grafana
+
+3. Create a Prometheus Datasource inside Grafana Dashboard
+4. Goto Import and enter the board ID .e.g. 2747 (Graph CPU USAGE, MEmory Usage, DIsk Usage Service)
+
+- select metrics from prometheus
+- click on the Alerting Tab
+- Click on new alert tab
+- Select graffana managed alert and set parammeters and alerts channel: 
+AVG Memory consumption Memory > 90% over 5mn    Channel  Slack (frequency every time, when to send)
+Disk Usage             Disk Usage > 80 %        Channel  Slack 
+Service Alive          Database up/down status  Channel  Slack
+
+This report will go primarily to the software team Chanel on Slack
+
+II Monitor Data in DataBase
+
+intergrate mysql with graffana PostgreSQL
+{"miner_state":"mining","miner_ip":"10.10.10.10","miner_state_time":45441.0,"find_miner":false,"restart_required":false,"reboot_required":false,"unlocked":false}
+select slack chanel for notification
+
+# RUN SQL QUERRY
+SELECT miner_ip's ,miner_state_time 
+FROM miner_status
+WHERE reboot_required = 'true'  AND "find_miner"='true' ;
+
+This report will go primarily to the maintainance team Chanel on Slack
+
