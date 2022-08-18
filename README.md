@@ -1,6 +1,6 @@
 
 Note The code herre and indicative. I only worked on the Devops tools i know (Graffana and Dockerfile )
-asumming the SQL DATABASE ALREDY EXIST
+asumming the SQL DATABASE ALREADY EXIST
 
 
 
